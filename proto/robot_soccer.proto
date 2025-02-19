@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package robot;
 
+import "vehicle_cloud_events.proto";
+
 message RobotPacket {
   uint32 robot_id = 1;     // Target robot ID
   
@@ -42,6 +44,7 @@ message Beep {
 }
 
 message RobotStatus {
-  float battery = 1;     // Battery level
-  float timestamp = 2;   // Robot's internal time
+  float timestamp = 1;                   // Robot's internal time
+  vehicle_cloud_events.BatteryEvent battery_info = 2; 
+  bool is_running = 3;                   // Heartbeat active status
 }
